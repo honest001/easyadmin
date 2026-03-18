@@ -1,0 +1,1 @@
+import{s as e}from"./request-DuvlZwMb.js";function s(t){return e({url:"/customer/list",method:"get",params:t})}function o(t){return e({url:"/customer/save",method:"post",data:t})}function u(t){return e({url:"/customer/record/list",method:"get",params:t})}export{u as a,s as g,o as s};

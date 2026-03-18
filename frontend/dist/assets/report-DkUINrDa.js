@@ -1,0 +1,1 @@
+import{s as e}from"./request-DuvlZwMb.js";function o(t){return e({url:"/report/business",method:"get",params:t})}function n(){return e({url:"/report/stock",method:"get"})}function s(t){return e({url:"/report/attendance",method:"get",params:t})}export{n as a,s as b,o as g};

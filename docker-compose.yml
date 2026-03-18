@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # MySQL数据库
+  mysql:
+    image: mysql:5.7
+    container_name: easyadmin-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+      MYSQL_DATABASE: easyadmin
+      MYSQL_INITDB_ARGS: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      LANG: C.UTF-8
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - easyadmin-net
+
+  # Redis缓存
+  redis:
+    image: redis:5.0
+    container_name: easyadmin-redis
+    restart: always
+    ports:
+      - "6380:6379"
+    networks:
+      - easyadmin-net
+
+  # 后端服务
+  backend:
+    build: ./backend
+    container_name: easyadmin-backend
+    restart: always
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/easyadmin?useUnicode=true&characterEncoding=utf8&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root123456
+      SPRING_REDIS_HOST: redis
+      SERVER_PORT: 8081
+    networks:
+      - easyadmin-net
+
+  # 前端服务
+  frontend:
+    build: ./frontend
+    container_name: easyadmin-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - easyadmin-net
+
+networks:
+  easyadmin-net:
+    driver: bridge

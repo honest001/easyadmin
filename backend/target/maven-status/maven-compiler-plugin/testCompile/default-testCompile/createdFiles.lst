@@ -1,0 +1,14 @@
+com/easyadmin/module/customer/CustomerControllerTest.class
+com/easyadmin/module/user/DeptControllerTest.class
+com/easyadmin/module/goods/GoodsCategoryControllerTest.class
+com/easyadmin/module/order/OrderControllerTest.class
+com/easyadmin/module/goods/GoodsControllerTest.class
+com/easyadmin/module/user/AttendanceControllerTest.class
+com/easyadmin/module/sys/SysUserControllerTest.class
+com/easyadmin/module/user/SalaryControllerTest.class
+com/easyadmin/module/approve/ApproveControllerTest.class
+com/easyadmin/module/report/ReportControllerTest.class
+com/easyadmin/module/goods/SupplierControllerTest.class
+com/easyadmin/module/user/EmployeeControllerTest.class
+com/easyadmin/module/goods/GoodsInControllerTest.class
+com/easyadmin/module/goods/GoodsOutControllerTest.class
